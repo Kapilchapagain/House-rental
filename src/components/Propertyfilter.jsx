@@ -1,40 +1,58 @@
-import React from 'react'
+import React from "react";
+import Button from "./Button";
 
-const Propertyfilter = () => {
+const PropertyFilter = () => {
   return (
-    <div className='h-[150px] w-[900px] border flex justify-around items-center rounded-xl border-gray-200 shadow-xl bg-white'>
-    <div>
-      <div>Location</div>
-      <div>
-        <input type="text" placeholder='Enter Location' />
+    <div className="w-full bg-white border text-black border-gray-200 shadow-xl rounded-xl p-6 flex items-end justify-between gap-4">
+      
+      {/* Location */}
+      <div className="flex flex-col w-full">
+        <label className="text-sm font-medium mb-1">Location</label>
+        <input
+          type="text"
+          placeholder="Enter location"
+          className="px-3 py-2 border rounded-md focus:outline-none "
+        />
       </div>
-    </div>
-    <div>
-      <div>Property Type</div>
-      <div>
 
+      {/* Property Type */}
+      <div className="flex flex-col w-full">
+        <label className="text-sm font-medium mb-1">Property Type</label>
+        <select className="px-3 py-2 border rounded-md focus:outline-none ">
+          <option>Select type</option>
+          <option>House</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+        </select>
       </div>
-    </div>
-    <div> 
-      <div>Min Price</div>
-      <div>
-        <input className='text-gray-400' type="text" placeholder='Min Price' />
+
+      {/* Min Price */}
+      <div className="flex flex-col w-full">
+        <label className="text-sm font-medium mb-1">Min Price</label>
+        <input
+          type="number"
+          placeholder="Min price"
+          className="px-3 py-2 border rounded-md focus:outline-none "
+        />
       </div>
-    </div>
-    <div> 
-      <div>Max Price</div>
-      <div>
-        <input className='text-gray-400' type="text" placeholder='Max Price' />
+
+      {/* Max Price */}
+      <div className="flex flex-col w-full">
+        <label className="text-sm font-medium mb-1">Max Price</label>
+        <input
+          type="number"
+          placeholder="Max price"
+          className="px-3 py-2 border rounded-md focus:outline-none "
+        />
       </div>
-    </div>
-    <div>
-      <button className='"px-6 py-4 bg-green-600 rounded text-white font-mono'>Search</button>
-    </div>
 
- 
+      {/* Button */}
+      <div>
+        <Button text="Search"/>
+      </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default Propertyfilter;
+export default PropertyFilter;

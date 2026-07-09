@@ -1,10 +1,12 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({text,classname="",onclick,type="button"}) => {
   return (
-    <div className='px-'>
-
-    </div>
+    <button  type={type}
+      onClick={onclick}
+      className={`bg-green-600 text-white rounded transition px-6 py-2`} >{text}
+     
+    </button>
   )
 }
 
