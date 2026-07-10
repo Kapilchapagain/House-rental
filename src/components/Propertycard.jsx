@@ -1,23 +1,22 @@
 import React from "react";
-import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
-const PropertyCard = ({ title, location, price, beds, baths, area, image }) => {
-  const navigate=useNavigate();
+const PropertyCard = ({ _id, title, location, price, beds, baths, area, image }) => {
+  const navigate = useNavigate();
+
   return (
-    <div onClick={() => navigate(`/property/${_id}`)} className="flex mt-5 items-center justify-between bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition duration-300">
-      
-      {/* Left - Image */}
-      <div className="w-[120px] h-[90px] rounded-lg overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+    <div
+      onClick={() => navigate(`/property/${_id}`)}
+      className="bg-white mt-5 rounded-xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden cursor-pointer"
+    >
+
+      {/* Image */}
+      <div className="h-[180px] w-full">
+        <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
 
-      {/* Middle - Details */}
-      <div className="flex-1 px-4">
+      {/* Content */}
+      <div className="p-4">
         <h2 className="text-md font-semibold text-gray-800">{title}</h2>
         <p className="text-sm text-gray-500">{location}</p>
 
@@ -26,17 +25,23 @@ const PropertyCard = ({ title, location, price, beds, baths, area, image }) => {
           <span>🛁 {baths} Baths</span>
           <span>📐 {area} sqft</span>
         </div>
+
+        <div className="flex justify-between items-center mt-4">
+          <p className="text-green-600 font-semibold">
+            ${price} <span className="text-gray-500 text-sm">/ month</span>
+          </p>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/property/${_id}`);
+            }}
+            className="bg-green-600 text-white px-3 py-1 rounded-md text-sm hover:bg-green-700"
+          >
+            View
+          </button>
+        </div>
       </div>
-
-      {/* Right - Price + Button */}
-      <div className="text-right space-y-2">
-        <p className="text-green-600 font-semibold text-md">
-          ${price} <span className="text-gray-500 text-sm">/ month</span>
-        </p>
-
-        <Button onclick={()=>navigate("/propertydetails")} text="View Details" />
-      </div>
-
     </div>
   );
 };

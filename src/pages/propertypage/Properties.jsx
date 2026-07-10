@@ -8,13 +8,13 @@ const Properties = () => {
   return (
     <div>
       <PropertyFilter/>
-      <div className='flex  space-x-102'>
+      <div className='flex  space-x-5'>
 
         <div>
          <Filtercard/>
       </div>
         
-<div className="space-y-4">
+<div className="gap-4 flex flex-wrap">
   {properties.map((item) => (
     <PropertyCard key={item._id} {...item} />
   ))}
