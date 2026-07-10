@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const PropertyCard = ({ title, location, price, beds, baths, area, image }) => {
   const navigate=useNavigate();
   return (
-    <div className="flex mt-5 items-center justify-between bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+    <div onClick={() => navigate(`/property/${_id}`)} className="flex mt-5 items-center justify-between bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition duration-300">
       
       {/* Left - Image */}
       <div className="w-[120px] h-[90px] rounded-lg overflow-hidden">

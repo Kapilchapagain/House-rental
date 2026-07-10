@@ -5,7 +5,7 @@ import Button from './Button';
 
 const Navbar = () => {
 return ( 
-<div className="flex items-center justify-between px-8 py-4 sticky top-0 z-50">
+<div className="flex bg-gray-400 items-center justify-between px-8 py-4 sticky top-0 z-50">
 
   <div className="text-lg   font-semibold flex">
     <House />
@@ -24,7 +24,7 @@ return (
   
   <div className="flex gap-4">
     <Link to="/login">
-      <button className="px-7 py-2 border border-gray-300  rounded font-mono ">Login</button>
+      <button className="px-7 py-2 border border-gray-300  rounded    ">Login</button>
       
     </Link>
     <Link to="/register">

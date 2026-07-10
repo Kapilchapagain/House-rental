@@ -1,34 +1,4 @@
-// import React from 'react'
-// import Button from './Button'
 
-// const Filtercard = () => {
-//   return (
-//     <div className='h-[600px] w-[200px] bg-gray-300'>
-//       <p>Filters</p>
-//       <h1>Property Type</h1>
-//       <div className=''>
-//       <input type="checkbox" />Apartment
-//       <input type="checkbox" />Villa
-//       <input type="checkbox" />House
-//       <input type="checkbox" />Studio
-//       </div>
-//       <h2>Price Range</h2>
-//       <div className=''>
-      
-//       <input type="checkbox" />$0-$1000
-//       <input type="checkbox" />$1000-$2000
-//       <input type="checkbox" />$2000-$3000
-//       <input type="checkbox" />$3000+
-//       </div>
-//       <Button text="Apply Filters"/>
-      
-     
-        
-//     </div>
-//   )
-// }
-
-// export default Filtercard
 
 import React from "react";
 import Button from "./Button";

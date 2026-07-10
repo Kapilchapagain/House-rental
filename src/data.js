@@ -19,7 +19,7 @@ const properties = [
     beds: 4,
     baths: 3,
     area: 2500,
-    image: "https://images.unsplash.com/photo-1572120360610-d971b9b78825",
+    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800",
   },
   {
     _id: 3,

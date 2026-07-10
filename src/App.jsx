@@ -9,6 +9,8 @@ import Homepage from './pages/homepage/Homepage'
 import Properties from './pages/propertypage/Properties'
 import Contact from './pages/contactpage/Contact'
 import PropertyDetails from './pages/propertydetails/PropertyDetails'
+import ForgotPassword from './pages/forgotpassword/ForgotPassword'
+
 
 const App = () => {
   return (
@@ -18,12 +20,14 @@ const App = () => {
     <Routes>
       <Route path='/login' element={<Login/>} />
       <Route path='/register' element={<Register/>} />
+      <Route path='/forgotpassword' element={<ForgotPassword/>}/>
 
       {/* nested routes */}
       <Route path='' element={<MainLayout/>}>
       <Route path='/' element={<Homepage/>}/>
       <Route path='properties' element={<Properties/>}/>
       <Route path='/propertydetails' element={<PropertyDetails/>}/>
+      <Route path='/propertydetails/:id' element={<PropertyDetails/>}/>
       <Route path='/aboutus' element={<AboutUs/>}/>
       <Route path='/contact' element={<Contact/>}/>
       </Route>

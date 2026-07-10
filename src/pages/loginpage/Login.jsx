@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 
 const Login = () => {
+  const navigate=useNavigate();
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -47,16 +48,20 @@ const Login = () => {
             </div>
 
             <div className="text-right">
-              <a href="#" className="text-sm text-green-600 hover:underline">
+              <a onClick={()=>navigate("/forgotpassword")} href="#" className="text-sm text-green-600 hover:underline">
                 Forgot Password?
               </a>
             </div>
 
-            <Button/>
+            <div className="flex justify-center">
+<Button text="Login"/>
+            </div>
+
+            
 
             <p className="text-center text-sm mt-2">
               Don't have an account?{" "}
-              <a href="#" className="text-green-600 hover:underline">
+              <a onClick={()=>navigate("/register")} href="#" className="text-green-600 hover:underline">
                 Register
               </a>
             </p>

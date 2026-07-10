@@ -1,14 +1,14 @@
 import React from 'react'
 import PropertyFilter from '../../components/propertyfilter'
 import Filtercard from '../../components/Filtercard'
-import properties from "../../data";
+import properties from "../../data.js";
 import PropertyCard from "../../components/Propertycard";
 
 const Properties = () => {
   return (
     <div>
       <PropertyFilter/>
-      <div className='flex'>
+      <div className='flex  space-x-102'>
 
         <div>
          <Filtercard/>

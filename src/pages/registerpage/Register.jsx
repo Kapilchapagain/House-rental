@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
 
 const Register = () => {
+  const navigate=useNavigate();
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       
@@ -66,17 +69,16 @@ const Register = () => {
             </div>
 
             {/* Button */}
-            <button
-              type="submit"
-              className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
-            >
-              Register
-            </button>
+            <div className="flex justify-center">
+              <Button text="Register"/>
+
+            </div>
+          
 
             {/* Login Link */}
             <p className="text-center text-sm mt-2">
               Already have an account?{" "}
-              <a href="#" className="text-green-600 hover:underline">
+              <a onClick={()=>navigate("/login")} href="#" className="text-green-600 hover:underline">
                 Login
               </a>
             </p>
