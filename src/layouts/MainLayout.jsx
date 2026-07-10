@@ -11,7 +11,7 @@ const MainLayout = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="px-3 sm:px-6 md:px-8 lg:px-10 py-4 max-w-7xl mx-auto">
+      <main className="   mx-auto">
         <Outlet />
       </main>
 

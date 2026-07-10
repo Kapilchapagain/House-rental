@@ -5,13 +5,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Heropage = () => {
   const navigate=useNavigate();
   return (
-    <div
-      className="relative h-screen w-full bg-cover bg-center -mx-3 sm:-mx-6 md:-mx-8 lg:-mx-10"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=3000&q=60')",
-      }}
-    >
+  
+  <div
+  className="relative h-screen w-full bg-cover bg-center"
+  style={{
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=3000&q=60')",
+  }}
+>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
