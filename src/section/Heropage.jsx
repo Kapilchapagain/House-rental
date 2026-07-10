@@ -1,7 +1,9 @@
 import React from "react";
 import Propertyfilter from "../components/propertyfilter";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Heropage = () => {
+  const navigate=useNavigate();
   return (
     <div
       className="relative h-screen w-full bg-cover bg-center -mx-3 sm:-mx-6 md:-mx-8 lg:-mx-10"
@@ -14,7 +16,7 @@ const Heropage = () => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+      <div className="relative z-10 flex flex-col items-start justify-center h-full text-center text-white px-4">
         
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           Find Your Perfect Home
@@ -24,7 +26,7 @@ const Heropage = () => {
           Discover the best rental properties that suit your lifestyle.
         </p>
 
-        <button className="bg-green-600 px-6 py-3 mb-6 rounded">
+        <button onClick={()=>navigate("/properties")} className="bg-green-600 px-6 py-3 mb-6 rounded">
           Explore Properties
         </button>
 
