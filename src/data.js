@@ -90,3 +90,33 @@ const properties = [
 ];
 
 export default properties;
+
+
+
+const dashboard = [
+  {
+    id: 1,
+    title: "Total Properties",
+    number: 12,
+    color: "text-green-500"
+  },
+  {
+    id: 2,
+    title: "Total Requests",
+    number: 45,
+    color: "text-blue-500"
+  },
+  {
+    id: 3,
+    title: "Approved Requests",
+    number: 20,
+    color: "text-green-500"
+  },
+  {
+    id: 4,
+    title: "Pending Requests",
+    number: 15,
+    color: "text-orange-500"
+  }
+];
+

@@ -8,7 +8,6 @@ const ForgotPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 👉 Replace with your API call
     console.log("Reset link sent to:", email);
 
     setMessage("Password reset link has been sent to your email.");
@@ -20,7 +19,6 @@ const ForgotPassword = () => {
       
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8">
         
-        {/* Title */}
         <h2 className="text-2xl font-bold text-center mb-2">
           Forgot Password
         </h2>
@@ -29,14 +27,13 @@ const ForgotPassword = () => {
           Enter your email and we’ll send you a reset link
         </p>
 
-        {/* Success Message */}
         {message && (
           <div className="bg-green-100 text-green-700 p-2 rounded mb-4 text-sm text-center">
             {message}
           </div>
         )}
 
-        {/* Form */}
+        
         <form onSubmit={handleSubmit} className="space-y-4">
           
           <div>
@@ -57,7 +54,7 @@ const ForgotPassword = () => {
           
         </form>
 
-        {/* Back to login */}
+        
         <div className="text-center mt-4 text-sm">
           <a href="/login" className="text-green-600 hover:underline">
             Back to Login

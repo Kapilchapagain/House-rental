@@ -10,6 +10,9 @@ import Properties from './pages/propertypage/Properties'
 import Contact from './pages/contactpage/Contact'
 import PropertyDetails from './pages/propertydetails/PropertyDetails'
 import ForgotPassword from './pages/forgotpassword/ForgotPassword'
+import TenantDashboard from './dashboard/tenant/TenantDashboard'
+import LandlordDashboard from './dashboard/landlord/LandlordDashboard'
+
 
 
 const App = () => {
@@ -31,6 +34,13 @@ const App = () => {
       <Route path='/aboutus' element={<AboutUs/>}/>
       <Route path='/contact' element={<Contact/>}/>
       </Route>
+
+
+      <Route path="/tenant" element={<TenantDashboard />} />
+      <Route path="/landlord" element={<LandlordDashboard />} />
+
+      
+
       
       
       

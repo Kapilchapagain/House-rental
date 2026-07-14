@@ -7,7 +7,7 @@ const Heropage = () => {
   return (
   
   <div
-  className="relative h-screen w-full bg-cover bg-center"
+  className="relative h-screen px-4 w-full bg-cover bg-center"
   style={{
     backgroundImage:
       "url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=3000&q=60')",
@@ -34,7 +34,7 @@ const Heropage = () => {
         {/* Filter */}
         <div className="w-full flex justify-center">
           <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-5xl">
-            <Propertyfilter />
+            <Propertyfilter  />
           </div>
         </div>
 

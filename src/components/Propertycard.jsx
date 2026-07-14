@@ -1,3 +1,4 @@
+import { Bath, Bed, Scale3d } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,23 +8,23 @@ const PropertyCard = ({ _id, title, location, price, beds, baths, area, image })
   return (
     <div
       onClick={() => navigate(`/property/${_id}`)}
-      className="bg-white mt-5 rounded-xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden cursor-pointer"
+      className="bg-white mt-5 min-h-39 rounded-xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden cursor-pointer"
     >
 
-      {/* Image */}
+      
       <div className="h-[180px] w-full">
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
 
-      {/* Content */}
+     
       <div className="p-4">
         <h2 className="text-md font-semibold text-gray-800">{title}</h2>
         <p className="text-sm text-gray-500">{location}</p>
 
         <div className="flex gap-4 text-sm text-gray-600 mt-2">
-          <span>🛏 {beds} Beds</span>
-          <span>🛁 {baths} Baths</span>
-          <span>📐 {area} sqft</span>
+          <span><Bed className="text-green-500" /> {beds} Beds</span>
+          <span><Bath className="text-blue-300" /> {baths} Baths</span>
+          <span><Scale3d className="text-black" /> {area} sqft</span>
         </div>
 
         <div className="flex justify-between items-center mt-4">
