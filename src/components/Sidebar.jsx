@@ -23,7 +23,7 @@ const Sidebar = ({ role }) => {
           { name: "Dashboard", icon: <Home />, path: "/" },
           { name: "My Properties", icon: <Building />, path: "/properties" },
           { name: "Requests", icon: <FileText />, path: "/requests" },
-          { name: "Add Property", icon: <PlusSquare />, path: "/add" },
+          { name: "Add Property", icon: <PlusSquare />, path: "/add-property" },
           { name: "Profile", icon: <User />, path: "/profile" },
         ]
       : [

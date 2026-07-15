@@ -1,55 +1,150 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import properties from "../../data.js";
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import properties from "../../data";
+import { Bed, Bath, Scale, ArrowLeft } from "lucide-react";
+import Button from "../../components/Button";
 
 const PropertyDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const property = properties.find((item) => item._id === Number(id));
+  const handleSendRequest = () => {
+  const requests = JSON.parse(localStorage.getItem("requests")) || [];
+
+  const newRequest = {
+    propertyId: property.id,
+    propertyTitle: property.title,
+    tenantName: "John Doe", 
+    status: "pending",
+  };
+
+  requests.push(newRequest);
+
+  localStorage.setItem("requests", JSON.stringify(requests));
+
+  alert("Request sent successfully!");
+};
+
+  const property = properties.find(
+    (p) => p._id === Number(id)
+  );
+
+  const [selectedImage, setSelectedImage] = useState(
+    property?.image
+  );
 
   if (!property) {
-    return <h2 className="text-center mt-10">Property not found</h2>;
+    return (
+      <h2 className="text-center mt-10 text-red-500">
+        Property Not Found
+      </h2>
+    );
   }
 
+  const gallery = [
+    property.image,
+    property.image,
+    property.image,
+    property.image,
+  ];
+
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      
-      {/* Image */}
-      <div className="w-full h-[350px] rounded-xl overflow-hidden mb-6">
-        <img
-          src={property.image}
-          alt={property.title}
-          className="w-full h-full object-cover"
-        />
+    <div className="max-w-6xl mx-auto p-6">
+
+
+      <button
+        onClick={() => navigate("/properties")}
+        className="flex items-center gap-2 hover:text-black text-gray-400 mb-4"
+      >
+        <ArrowLeft size={18} /> Back to Properties
+      </button>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+        <div>
+
+          <img
+            src={selectedImage}
+            alt={property.title}
+            className="w-full h-[350px] object-cover rounded-xl"
+          />
+
+          <div className="flex gap-3 mt-4">
+            {gallery.map((img, index) => (
+              <img key={index} src={img} alt="thumb"
+                onClick={() => setSelectedImage(img)}
+                className={`w-24 h-20 object-cover rounded-lg cursor-pointer border-2 ${selectedImage === img
+                    ? "border-green-500"
+                    : "border-transparent"
+                  }`}
+              />
+            ))}
+          </div>
+        </div>
+
+
+        <div>
+          <h1 className="text-3xl font-bold mb-2">
+            {property.title}
+          </h1>
+
+          <p className="text-gray-500 mb-3">
+            {property.location}
+          </p>
+
+          <p className="text-green-600 text-2xl font-semibold mb-4">
+            ${property.price} / month
+          </p>
+
+
+          <div className="flex gap-6 mb-6 text-gray-700">
+            <span className="flex items-center gap-1">
+              <Bed /> {property.beds} Beds
+            </span>
+            <span className="flex items-center gap-1">
+              <Bath /> {property.baths} Baths
+            </span>
+            <span className="flex items-center gap-1">
+              <Scale /> {property.area} sqft
+            </span>
+          </div>
+
+
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold mb-2">
+              Description
+            </h2>
+            <p className="text-gray-600">
+              {property.description ||
+                "Beautiful modern apartment in the heart of the city. Close to all amenities, public transportation, and shopping centers."}
+            </p>
+          </div>
+
+          
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold mb-2">
+              Amenities
+            </h2>
+
+            <div className="grid grid-cols-2 gap-2 text-gray-600">
+              <p>✔ WiFi</p>
+              <p>✔ Balcony</p>
+              <p>✔ Parking</p>
+              <p>✔ Washing Machine</p>
+              <p>✔ Air Conditioning</p>
+              <p>✔ Security</p>
+            </div>
+          </div>
+
+          
+          <div className="flex justify-center">
+            <Button onclick={handleSendRequest} text="Send Request"/>
+
+          </div>
+          
+        </div>
       </div>
-
-      {/* Title + Location */}
-      <h1 className="text-2xl font-bold text-gray-800">
-        {property.title}
-      </h1>
-      <p className="text-gray-500 mb-4">{property.location}</p>
-
-      {/* Price */}
-      <p className="text-green-600 text-xl font-semibold mb-4">
-        ${property.price} / month
-      </p>
-
-      {/* Details */}
-      <div className="flex gap-6 text-gray-700 mb-6">
-        <span>🛏 {property.beds} Beds</span>
-        <span>🛁 {property.baths} Baths</span>
-        <span>📐 {property.area} sqft</span>
-        <span>🏠 {property.type}</span>
-      </div>
-
-      {/* Description */}
-      <p className="text-gray-600 leading-relaxed">
-        This is a beautiful {property.type.toLowerCase()} located in{" "}
-        {property.location}. It offers modern facilities, spacious rooms,
-        and a comfortable living experience. Perfect for families or
-        individuals looking for a great place to stay.
-      </p>
-
     </div>
   );
 };

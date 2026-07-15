@@ -25,9 +25,10 @@ const Login = () => {
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
  
-  const validUser = users.find(
-    (user) => user.email === email && user.password === password
-  );
+  const validUser = users.find((user) =>
+    user.email.toLowerCase() === email.toLowerCase() &&
+    user.password === password
+);
 
   if (!validUser) {
     setErrors({ general: "Invalid email or password " });
@@ -43,7 +44,7 @@ const Login = () => {
   if (validUser.role === "landlord") {
     navigate("/landlord");
   } else {
-    navigate("/tenant");
+    navigate("/");
   }
 };
 

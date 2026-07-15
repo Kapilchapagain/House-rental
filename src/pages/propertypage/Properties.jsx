@@ -61,15 +61,17 @@ const Properties = () => {
         </div>
 
         
-        <div className="gap-4 flex flex-wrap">
-          {filtered.length > 0 ? (
-            filtered.map((item) => (
-              <PropertyCard key={item._id} {...item} />
-            ))
-          ) : (
-            <p className="text-gray-500 text-2xl font-bold flex items-center ">No properties found</p>
-          )}
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full items-start">
+  {filtered.length > 0 ? (
+    filtered.map((item) => (
+      <PropertyCard key={item._id} {...item} />
+    ))
+  ) : (
+    <p className="text-gray-500 text-2xl font-bold col-span-full text-center">
+      No properties found
+    </p>
+  )}
+</div>
 
       </div>
 

@@ -10,7 +10,7 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    role:"tenant"
+    role: "tenant", 
   });
 
   const [errors, setErrors] = useState({});
@@ -22,56 +22,67 @@ const Register = () => {
   const validate = () => {
     let newErrors = {};
 
-    if (!form.name) newErrors.name = "Name is required";
-    if (!form.email) newErrors.email = "Email is required";
-    if (!form.password) newErrors.password = "Password is required";
-    if (form.password !== form.confirmPassword)
+    if (!form.name.trim()) newErrors.name = "Name is required";
+    if (!form.email.trim()) newErrors.email = "Email is required";
+    if (!form.password.trim()) newErrors.password = "Password is required";
+    if (form.password !== form.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
+    }
 
     return newErrors;
   };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const validationErrors = validate();
-  if (Object.keys(validationErrors).length > 0) {
-    setErrors(validationErrors);
-    return;
-  }
+    const validationErrors = validate();
 
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
-  const userExists = existingUsers.find(
-    (user) => user.email === form.email
-  );
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-  if (userExists) {
-    alert("User already exists!");
-    return;
-  }
+    const userExists = existingUsers.find(
+      (user) => user.email === form.email
+    );
 
-  const newUser = {
-    name: form.name,
-    email: form.email,
-    password: form.password,
-    role: form.role, 
+    if (userExists) {
+      alert("User already exists!");
+      return;
+    }
+
+    const newUser = {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+      role: form.role,
+    };
+
+    const updatedUsers = [...existingUsers, newUser];
+
+  
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+  
+    localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+    console.log("Registered & Logged in:", newUser);
+
+   
+    if (newUser.role === "landlord") {
+      navigate("/landlord");
+    } else {
+      navigate("/tenant");
+    }
   };
-
-  const updatedUsers = [...existingUsers, newUser];
-
-  localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-  console.log("Saved Users:", updatedUsers);
-
-  navigate("/login");
-};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="flex w-[850px] bg-white rounded-xl shadow-lg overflow-hidden">
         
-      
+        
         <div className="w-2/5 bg-green-50 flex flex-col items-center justify-center p-6">
           <img
             src="https://cdn-icons-png.flaticon.com/512/619/619153.png"
@@ -84,13 +95,13 @@ const Register = () => {
           </p>
         </div>
 
-        
+       
         <div className="w-[500px] p-8">
           <h2 className="text-2xl font-semibold mb-6">Create Account</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
 
-           
+            
             <div>
               <label className="block text-sm mb-1">Full Name</label>
               <input
@@ -116,6 +127,7 @@ const Register = () => {
               {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
             </div>
 
+           
             <div>
               <label className="block text-sm mb-1">Password</label>
               <input
@@ -128,7 +140,7 @@ const Register = () => {
               {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
             </div>
 
-           
+            
             <div>
               <label className="block text-sm mb-1">Confirm Password</label>
               <input
@@ -143,20 +155,21 @@ const Register = () => {
               )}
             </div>
 
+            
             <div>
-  <label className="block text-sm mb-1">Register As</label>
-  <select
-    name="role"
-    value={form.role}
-    onChange={handleChange}
-    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500"
-  >
-    <option value="tenant">Tenant</option>
-    <option value="landlord">Landlord</option>
-  </select>
-</div>
+              <label className="block text-sm mb-1">Register As</label>
+              <select
+                name="role"
+                value={form.role}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500"
+              >
+                <option value="tenant">Tenant</option>
+                <option value="landlord">Landlord</option>
+              </select>
+            </div>
 
-          
+           
             <div className="flex justify-center">
               <Button text="Register" />
             </div>
@@ -171,6 +184,7 @@ const Register = () => {
                 Login
               </span>
             </p>
+
           </form>
         </div>
       </div>

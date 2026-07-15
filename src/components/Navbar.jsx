@@ -20,17 +20,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex bg-gray-400 items-center justify-between px-8 py-4 sticky top-0 z-50">
+    <div className="flex bg-gray-900 items-center justify-between px-8 py-4 sticky top-0 z-50">
 
       
-      <div className="text-lg font-semibold flex items-center gap-2">
-        <House />
+      <div className="text-lg text-white font-semibold flex items-center gap-2">
+        <House onClick={()=>navigate("/")} />
         HouseRent
       </div>
 
      
       <nav>
-        <ul className="flex gap-6 font-semibold text-black">
+        <ul className="flex gap-6 font-semibold text-white">
           <li className="hover:text-green-600"><Link to="/">Home</Link></li>
           <li className="hover:text-green-600"><Link to="/properties">Properties</Link></li>
           <li className="hover:text-green-600"><Link to="/aboutus">About Us</Link></li>
@@ -43,7 +43,7 @@ const Navbar = () => {
         {!user ? (
           <>
             <Link to="/login">
-              <button className="px-7 py-2 border border-gray-300 rounded">
+              <button className="px-7 py-2 border text-white border-gray-300 rounded">
                 Login
               </button>
             </Link>
