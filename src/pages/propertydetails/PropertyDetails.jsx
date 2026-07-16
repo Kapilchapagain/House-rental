@@ -9,20 +9,45 @@ const PropertyDetails = () => {
   const navigate = useNavigate();
 
   const handleSendRequest = () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser) {
+    alert("Please login first!");
+    navigate("/login");
+    return;
+  }
+
   const requests = JSON.parse(localStorage.getItem("requests")) || [];
 
   const newRequest = {
-    propertyId: property.id,
+    id: Date.now(),
+    propertyId: property._id, 
     propertyTitle: property.title,
-    tenantName: "John Doe", 
+    landlordId: property.landlordId || "landlord1", 
+    tenantName: currentUser.name, 
+    tenantEmail: currentUser.email, 
     status: "pending",
   };
 
-  requests.push(newRequest);
+  const updatedRequests = [...requests, newRequest];
 
-  localStorage.setItem("requests", JSON.stringify(requests));
+  localStorage.setItem("requests", JSON.stringify(updatedRequests));
+
+  console.log("Saved Requests:", updatedRequests); // debug
 
   alert("Request sent successfully!");
+
+
+  const alreadyRequested = requests.find(
+  (req) =>
+    req.propertyId === property._id &&
+    req.tenantEmail === currentUser.email
+);
+
+if (alreadyRequested) {
+  alert("You already sent a request for this property!");
+  return;
+}
 };
 
   const property = properties.find(
@@ -139,7 +164,7 @@ const PropertyDetails = () => {
 
           
           <div className="flex justify-center">
-            <Button onclick={handleSendRequest} text="Send Request"/>
+            <Button onClick={handleSendRequest} text="Send Request"/>
 
           </div>
           

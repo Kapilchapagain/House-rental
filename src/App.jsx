@@ -15,6 +15,10 @@ import LandlordDashboard from "./dashboard/landlord/LandlordDashboard";
 import AddProperty from "./dashboard/landlord/AddProperty";
 
 import properties from "./data";
+import TenantProfile from "./pages/tenantprofile/TenantProfile";
+import HelpCenter from "./pages/helpcenter/HelpCenter";
+import TermsOfService from "./pages/termsofservice/TermsOfService";
+import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy";
 
 const App = () => {
   useEffect(() => {
@@ -36,6 +40,10 @@ const App = () => {
         <Route path="property/:id" element={<PropertyDetails />} />
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="tenant-profile" element={<TenantProfile/>}/>
+        <Route path="helpcenter" element={<HelpCenter/>}/>
+        <Route path="termsofservice" element={<TermsOfService/>}/>
+        <Route path="privacypolicy" element={<PrivacyPolicy/>}/>
       </Route>
 
       
